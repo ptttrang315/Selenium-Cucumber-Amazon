@@ -11,4 +11,9 @@ public class TodaysDealsPage {
         WebUI.verifyElementVisible(findTestObject("Amazon.Today's Deals.Filter.Discount", Map.of("value", value)));
         WebUI.click(findTestObject("Amazon.Today's Deals.Filter.Discount", Map.of("value", value)));
     }
+
+    public static void viewTheDeal(String index) throws Exception {
+        WebUI.verifyElementVisible(findTestObject("Amazon.Today's Deals.Product Cart.Item", Map.of("index", index)));
+        WebUI.click(findTestObject("Amazon.Today's Deals.Product Cart.Item", Map.of("index", index)));
+    }
 }

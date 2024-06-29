@@ -1,5 +1,6 @@
 package com.trangptt.definitions;
 
+import com.trangptt.POM.ProductDetailsPage;
 import com.trangptt.POM.TodaysDealsPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -27,5 +28,20 @@ public class ShoppingCartManagement {
     @And("I select filter Discount {string}")
     public void iSelectFilterDiscount(String arg0) throws Exception {
         TodaysDealsPage.selectDiscountFilter(arg0);
+    }
+
+    @And("I view the deal for the {string} item")
+    public void iViewTheDealForTheItem(String arg0) throws Exception {
+        String index = arg0.replaceAll("\\D+", "");
+        TodaysDealsPage.viewTheDeal(index);
+    }
+
+    @And("I add {string} of the item into the cart")
+    public void iAddOfTheItemIntoTheCart(String arg0) throws Exception {
+        if (ProductDetailsPage.hasSizeOptions()) {
+            ProductDetailsPage.randomSelectAvailableSize();
+        }
+        ProductDetailsPage.selectQuantity(arg0);
+        ProductDetailsPage.addProductToCart();
     }
 }

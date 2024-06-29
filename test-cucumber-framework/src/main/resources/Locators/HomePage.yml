@@ -7,3 +7,15 @@ Amazon:
   Today's Deals:
     Filter:
       Discount: xpath=//*[text()="${value}"]/../../i
+    Product Cart:
+      Item: xpath=(//a[contains(@class,"ProductCard")])[${index}]
+
+  ProductDetails:
+    Size:
+      Dropdown: xpath=//*[@id="dropdown_selected_size_name"]
+      OptionAvailable: xpath=//*[contains(@class, "dropdown")]//li[contains(@class, "dropdownAvailable")]
+      OptionUnavailable: xpath=//*[contains(@class, "dropdown")]//li[contains(@class, "dropdownUnavailable")]
+    Quantity:
+      Dropdown: xpath=//*[@data-action="quantity-dropdown"]
+      Select Quantity: xpath=//*[contains(@id, "quantity") and @data-value='{"stringVal":"${count}"}']
+    Add to Cart: xpath=//*[@id="add-to-cart-button"]
