@@ -1,0 +1,9 @@
+Amazon:
+  HomePage:
+    Button:
+      Dismiss: xpath=//input[@data-action-type="DISMISS"]
+    Menu:
+      Today's Deals: xpath=//a[text()="Today's Deals"]
+  Today's Deals:
+    Filter:
+      Discount: xpath=//*[text()="${value}"]/../../i

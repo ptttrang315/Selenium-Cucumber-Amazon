@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.trangptt</groupId>
+        <artifactId>test-parent-pom</artifactId>
+        <version>${revision}</version>
+        <relativePath>../test-parent-pom/pom.xml</relativePath>
+    </parent>
+
+    <artifactId>test-cucumber-framework</artifactId>
+    <name>Cucumber Framework Test Repository</name>
+    <version>${revision}</version>
+    <description>Test repository with test case is created and executed in Cucumber Framework.</description>
+
+    <properties>
+        <github.repository>test-cucumber-framework</github.repository>
+        <!-- Specific for test -->
+        <skipTests>false</skipTests>
+        <!--suppress UnresolvedMavenProperty - Property 'custom.timestamp' is created when initializing-->
+        <outputDirectory>${project.build.directory}/reports/${custom.timestamp}</outputDirectory>
+        <selenium.screenshot.directory>${outputDirectory}/Screenshots</selenium.screenshot.directory>
+        <configuration.directory>${project.basedir}/src/test/resources/configuration</configuration.directory>
+        <configuration.base>${configuration.directory}/seleniumConfiguration.yaml</configuration.base>
+        <configuration.ordering1>${configuration.directory}/input_java_opts.properties</configuration.ordering1>
+        <testObjectRepository.directory>${project.basedir}/src/main/resources</testObjectRepository.directory>
+        <webElementIdentifiers.directory>${testObjectRepository.directory}/Locators</webElementIdentifiers.directory>
+        <log4j2.configurationFile>file:///${basedir}/src/test/resources/log4j2.properties</log4j2.configurationFile>
+        <log4j2.path>${outputDirectory}</log4j2.path>
+        <applicationContextPath>spring/application-context.xml</applicationContextPath>
+        <selenium.browser.type>chrome</selenium.browser.type>
+        <basedUrl>https://amazon.com</basedUrl>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-testng</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-gherkin</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>gherkin</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.trangptt</groupId>
+            <artifactId>test-libraries-webui</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.trangptt</groupId>
+            <artifactId>test-libraries-utilities</artifactId>
+            <version>${revision}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>flatten-maven-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.gmavenplus</groupId>
+                <artifactId>gmavenplus-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skipTests>${skipTests}</skipTests>
+                    <systemPropertyVariables>
+                        <!--https://cucumber.io/docs/cucumber/api/?lang=java-->
+                        <cucumber.plugin>pretty,html:${outputDirectory}/report.html</cucumber.plugin>
+                        <outputDirectory>${outputDirectory}</outputDirectory>
+                        <selenium.screenshot.directory>${selenium.screenshot.directory}
+                        </selenium.screenshot.directory>
+                        <configuration.directory>${configuration.directory}</configuration.directory>
+                        <configuration.base>${configuration.base}</configuration.base>
+                        <configuration.ordering1>${configuration.ordering1}</configuration.ordering1>
+                        <testObjectRepository.directory>${testObjectRepository.directory}
+                        </testObjectRepository.directory>
+                        <webElementIdentifiers.directory>${webElementIdentifiers.directory}
+                        </webElementIdentifiers.directory>
+                        <log4j2.configurationFile>${log4j2.configurationFile}</log4j2.configurationFile>
+                        <log4j2.path>${log4j2.path}</log4j2.path>
+                        <applicationContextPath>${applicationContextPath}</applicationContextPath>
+                        <selenium.browser.type>${selenium.browser.type}</selenium.browser.type>
+                        <basedUrl>${basedUrl}</basedUrl>
+                    </systemPropertyVariables>
+                    <includes>
+                        <include>**/*Runner*.java</include>
+                    </includes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

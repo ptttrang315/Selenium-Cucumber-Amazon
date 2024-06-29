@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.trangptt</groupId>
+        <artifactId>test-parent-pom</artifactId>
+        <version>${revision}</version>
+        <relativePath>../test-parent-pom/pom.xml</relativePath>
+    </parent>
+
+    <artifactId>test-automation-libs</artifactId>
+    <name>Test Automation Libraries</name>
+    <description>Test automation libraries are written in Java and used for test automation projects.
+    </description>
+    <packaging>pom</packaging>
+    <version>${revision}</version>
+    <modules>
+        <module>test-libraries</module>
+    </modules>
+
+    <profiles>
+        <profile>
+            <id>flatten-pom</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>flatten-maven-plugin</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>
