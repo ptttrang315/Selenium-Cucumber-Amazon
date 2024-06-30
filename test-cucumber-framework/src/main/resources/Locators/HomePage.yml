@@ -42,4 +42,7 @@ Amazon:
     Delete Item:
       By Index: xpath=(//input[@value="Delete"])[${index}]
     Subtotals:
-      Number of items: xpath=
+      Active View Form: xpath=//*[@id="activeCartViewForm"]//*[@data-name="Subtotals"]
+      Gutter View Form: xpath=//*[@id="gutterCartViewForm"]//*[@data-name="Subtotals"]
+    Button:
+      Proceed to checkout: xpath=//input[@name="proceedToRetailCheckout"]

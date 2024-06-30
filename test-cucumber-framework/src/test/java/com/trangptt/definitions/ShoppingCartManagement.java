@@ -4,22 +4,33 @@ import com.trangptt.POM.CartPage;
 import com.trangptt.POM.ProductDetailsPage;
 import com.trangptt.POM.ProductSearchPage;
 import com.trangptt.POM.TodaysDealsPage;
+import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import com.trangptt.library.WebUI;
 import com.trangptt.library.configuration.ConfigurationManager;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import com.trangptt.POM.HomePage;
 
+import java.util.Map;
+
 public class ShoppingCartManagement {
+    private Scenario currentScenario;
+
+    @Before
+    public void beforeScenario(Scenario scenario) {
+        this.currentScenario = scenario;
+    }
 
     @Given("I go to amazon.com")
     public void iGoToAmazonCom() {
         WebUI.openBrowser(ConfigurationManager.getInstance().getValue("basedUrl"));
     }
 
-    @When("I click on {string}")
-    public void iClickOn(String arg0) throws Exception {
+    @When("I click on menu {string}")
+    public void iClickOnMenu(String arg0) throws Exception {
         HomePage.clickOnMenu(arg0);
     }
 
@@ -82,5 +93,21 @@ public class ShoppingCartManagement {
     public void iDeleteTheItem(String arg0) throws Exception {
         String index = arg0.replaceAll("\\D+", "");
         CartPage.deleteItemByIndex(index);
+    }
+
+    @Then("I should see {string} of items in the cart")
+    public void iShouldSeeOfItemsInTheCart(String arg0) {
+
+    }
+
+    @Then("I should see the price for {string} items in the cart")
+    public void iShouldSeeThePriceForItemsInTheCart(String arg0) throws Exception {
+        Map<String, String> details = CartPage.verifySubtotal(arg0, this.currentScenario);
+        this.currentScenario.log("Subtotal (" + details.get("quantity") + " items): $" + details.get("price"));
+    }
+
+    @And("I click on {string} on the cart page")
+    public void iClickOnOnTheCartPage(String arg0) throws Exception {
+        CartPage.clickOnButton(arg0);
     }
 }
