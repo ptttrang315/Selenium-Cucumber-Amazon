@@ -1,4 +1,7 @@
 Amazon:
+  Challenge:
+    Captcha Input: xpath=//input[@id="captchacharacters"]
+
   HomePage:
     Search:
       Textbox: xpath=//*[@aria-label="Search Amazon"]

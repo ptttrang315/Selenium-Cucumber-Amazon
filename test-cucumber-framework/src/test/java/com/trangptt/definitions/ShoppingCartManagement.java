@@ -29,6 +29,11 @@ public class ShoppingCartManagement {
         WebUI.openBrowser(ConfigurationManager.getInstance().getValue("basedUrl"));
     }
 
+    @And("I input Captcha manually if required with timeout {string} seconds")
+    public void iInputCaptchaManuallyIfRequiredWithTimeoutSeconds(String arg0) throws Exception {
+        HomePage.solveCaptchaChallenge(Integer.parseInt(arg0));
+    }
+
     @When("I click on menu {string}")
     public void iClickOnMenu(String arg0) throws Exception {
         HomePage.clickOnMenu(arg0);

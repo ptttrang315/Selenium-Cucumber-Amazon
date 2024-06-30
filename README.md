@@ -70,6 +70,8 @@ mvn test -Dincludes=CheckoutCart
 
 - `-Dincludes`: Specify the test tag to run. In this case, it will run the test scenarios with the tag `@CheckoutCart`.
 
+**Noted**: Application can ask to input the captcha, currently this step needs to be done manually. Test will wait for 90 seconds for the captcha to be solved.
+
 ## Reports
 
 After the test is completed, the test report and screenshots will be generated in the [test-cucumber-framework/target/reports](test-cucumber-framework/target/reports) directory. Each execution will generate a subdirectory with timestamp.

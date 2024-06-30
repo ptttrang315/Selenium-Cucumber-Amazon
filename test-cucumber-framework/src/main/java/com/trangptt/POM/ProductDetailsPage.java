@@ -23,6 +23,7 @@ public class ProductDetailsPage {
     }
 
     public static void addProductToCart() throws Exception {
+        WebUI.verifyElementClickable(findTestObject("Amazon.ProductDetails.Add to Cart"));
         WebUI.click(findTestObject("Amazon.ProductDetails.Add to Cart"));
     }
 
