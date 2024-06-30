@@ -123,4 +123,12 @@ public class WebUI {
         WebDriver driver = DriverManager.getDriver();
         WebUIAbstract.verifyElementTextContains(driver, testObject, expectText);
     }
+
+    public static void delay(int seconds) {
+        try {
+            Thread.sleep(seconds * 1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }

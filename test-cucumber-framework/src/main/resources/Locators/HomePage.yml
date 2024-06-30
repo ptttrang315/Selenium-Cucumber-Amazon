@@ -1,12 +1,17 @@
 Amazon:
   HomePage:
+    Search:
+      Textbox: xpath=//*[@aria-label="Search Amazon"]
+      Button: cssSelector=input[type='submit']
     Button:
       Dismiss: xpath=//input[@data-action-type="DISMISS"]
+      Navigate Home Logo: xpath=//a[@aria-label="Amazon"]
     Menu:
       Today's Deals: xpath=//a[text()="Today's Deals"]
+
   Today's Deals:
     Filter:
-      Discount: xpath=//*[text()="${value}"]/../../i
+      Option: xpath=//*[text()="${value}"]/../../i
     Product Cart:
       Item: xpath=(//a[contains(@class,"ProductCard")])[${index}]
 
@@ -19,3 +24,22 @@ Amazon:
       Dropdown: xpath=//*[@data-action="quantity-dropdown"]
       Select Quantity: xpath=//*[contains(@id, "quantity") and @data-value='{"stringVal":"${count}"}']
     Add to Cart: xpath=//*[@id="add-to-cart-button"]
+
+  ProductSearch:
+    Go to Cart: xpath=//a[contains(text(),"Go to Cart")]
+    Add to Cart:
+      By Index: xpath=//*[@data-cel-widget="search_result_${index}"]//*[text()="Add to cart"]
+    Remove from Cart:
+      By Index: xpath=//*[@data-cel-widget="search_result_${index}"]//*[text()="Remove"]
+    Sort By:
+      Dropdown: cssSelector=[aria-label="Sort by:"]
+      Option: xpath=//*[@role="listbox"]//*[text()="${value}"]
+
+  Cart:
+    Quantity:
+      Dropdown By Index: xpath=(//*[@data-action="quantity"]//*[@data-a-class="quantity"])[${index}]
+      Select Quantity: xpath=//*[@aria-hidden="false"]//*[contains(@id, "quantity") and @data-value='{"stringVal":"${count}"}']
+    Delete Item:
+      By Index: xpath=(//input[@value="Delete"])[${index}]
+    Subtotals:
+      Number of items: xpath=
