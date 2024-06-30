@@ -107,6 +107,11 @@ public class WebUIAbstract {
         Waiting.Condition.INVISIBILITY_OF_ELEMENT_LOCATED.waitForElement(driver, testObject, true, -1, null);
     }
 
+    public static void verifyElementClickable(WebDriver driver, TestObject testObject) {
+        Waiting.Element.VISIBILITY_OF_ELEMENT_LOCATED.waitForElement(driver, testObject, true, -1);
+        Waiting.Element.ELEMENT_TO_BE_CLICKABLE.waitForElement(driver, testObject, true, -1);
+    }
+
     public static void verifyElementTextEquals(WebDriver driver, TestObject testObject, String expectText) {
         LOGGER.info("Verify text is present in element should equal: " + expectText);
         try {
@@ -126,7 +131,7 @@ public class WebUIAbstract {
     public static void verifyElementTextContains(WebDriver driver, TestObject testObject, String expectText) {
         LOGGER.info("Verify text is present in element should contain: " + expectText);
         try {
-            Waiting.Condition.TEXT_TO_BE_PRESENT_IN_ELEMENT.waitForElement(driver, testObject, true, -1, expectText);
+            Waiting.Condition.TEXT_TO_BE_PRESENT_IN_ELEMENT_LOCATED.waitForElement(driver, testObject, true, -1, expectText);
             String actualText = WebElementHelpers.getWebElement(driver, testObject).getText();
             if (actualText.contains(expectText)) {
                 LOGGER.info("Value: " + actualText + " is present in element and contain: " + expectText);

@@ -21,6 +21,7 @@ public class ProductSearchPage {
     }
 
     public static void gotoCart() throws Exception {
+        WebUI.verifyElementClickable(findTestObject("Amazon.ProductSearch.Go to Cart"));
         WebUI.click(findTestObject("Amazon.ProductSearch.Go to Cart"));
     }
 }

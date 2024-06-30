@@ -114,6 +114,11 @@ public class WebUI {
         WebUIAbstract.verifyElementNotVisible(driver, testObject);
     }
 
+    public static void verifyElementClickable(TestObject testObject) throws Exception {
+        WebDriver driver = DriverManager.getDriver();
+        WebUIAbstract.verifyElementClickable(driver, testObject);
+    }
+
     public static void verifyElementTextEquals(TestObject testObject, String expectText) throws Exception {
         WebDriver driver = DriverManager.getDriver();
         WebUIAbstract.verifyElementTextEquals(driver, testObject, expectText);

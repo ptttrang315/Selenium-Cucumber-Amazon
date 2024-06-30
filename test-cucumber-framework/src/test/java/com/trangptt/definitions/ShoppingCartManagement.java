@@ -42,6 +42,7 @@ public class ShoppingCartManagement {
     @And("I select filter Discount {string}")
     public void iSelectFilterDiscount(String arg0) throws Exception {
         TodaysDealsPage.selectFilter(arg0);
+        TodaysDealsPage.seeMoreFilter("Department");
         TodaysDealsPage.selectFilter("Clothing, Shoes & Jewelry");
     }
 
@@ -72,9 +73,9 @@ public class ShoppingCartManagement {
 
     @And("I add {string} of the searched item into the cart")
     public void iAddOfTheSearchedItemIntoTheCart(String arg0) throws Exception {
-        for (int i = 1; i <= Integer.parseInt(arg0); i++) {
-            ProductSearchPage.addToCartByIndex(String.valueOf(i));
-            ProductSearchPage.hasQuantityToRemove(String.valueOf(i));
+        for (int i = 0; i < Integer.parseInt(arg0); i++) {
+            ProductSearchPage.addToCartByIndex("1");
+            ProductSearchPage.hasQuantityToRemove("1");
         }
     }
 

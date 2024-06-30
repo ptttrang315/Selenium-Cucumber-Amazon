@@ -6,6 +6,7 @@ import com.trangptt.library.configuration.ConfigurationManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
@@ -17,6 +18,8 @@ import java.util.List;
 
 import static com.trangptt.library.configuration.Constants.SELENIUM_CHROME_ARGS;
 import static com.trangptt.library.configuration.Constants.SELENIUM_CHROME_PREFS;
+import static com.trangptt.library.configuration.Constants.SELENIUM_EDGE_ARGS;
+import static com.trangptt.library.configuration.Constants.SELENIUM_EDGE_PREFS;
 import static com.trangptt.library.configuration.Constants.SELENIUM_FIREFOX_ARGS;
 import static com.trangptt.library.configuration.Constants.SELENIUM_FIREFOX_PREFS;
 
@@ -66,12 +69,21 @@ public enum BrowserFactory {
     EDGE {
         @Override
         public WebDriver createLocalDriver() {
-            return null;
+            return new EdgeDriver(getOptions());
         }
 
         @Override
         public EdgeOptions getOptions() {
-            return null;
+            EdgeOptions options = new EdgeOptions();
+            List<String> listArgs = ConfigurationManager.getInstance().getListValues(SELENIUM_EDGE_ARGS);
+            options.addArguments(listArgs.toArray(new String[0]));
+            LinkedHashMap listPrefs = ConfigurationManager.getInstance().getMapValues(SELENIUM_EDGE_PREFS);
+            if (listPrefs != null) {
+                listPrefs.forEach((key, value) -> {
+                    options.setCapability(key.toString(), value);
+                });
+            }
+            return options;
         }
     },
     SAFARI {

@@ -16,7 +16,7 @@ selenium:
 #        se:screenResolution: "1920x1080"
       args:
         - "start-maximized"
-#        - "--incognito"
+        - "--incognito"
         - "high-dpi-support=1"
         - "force-device-scale-factor=1"
 #        - "--disable-extensions"
@@ -24,6 +24,13 @@ selenium:
 #        - "enable-automation"
 #        - "--verbose"
 #        - "--proxy-server=10.10.10.10:8080"
+    edge:
+      prefs:
+      args:
+        - "start-maximized"
+        - "--incognito"
+        - "high-dpi-support=1"
+        - "force-device-scale-factor=1"
     firefox:
       args:
         - "--ignore-certificate-errors"

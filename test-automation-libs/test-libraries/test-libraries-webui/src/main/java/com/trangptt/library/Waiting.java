@@ -47,7 +47,7 @@ public class Waiting {
             public WebElement waitForElement(WebDriver driver, Object object, boolean isWait, int timeOut) {
                 return getWaitDriver(driver, isWait, timeOut).until(
                                 ExpectedConditions.elementToBeClickable(
-                                        ExpectedConditions.presenceOfElementLocated(getBy(object)).apply(driver)
+                                        ExpectedConditions.visibilityOfElementLocated(getBy(object)).apply(driver)
                                 ));
             }
         },

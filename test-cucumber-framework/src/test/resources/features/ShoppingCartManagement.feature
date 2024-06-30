@@ -1,4 +1,4 @@
-@Shopping
+@CheckoutCart
 Feature: Amazon Shopping Cart Management
 
   Scenario Outline: Manage items in the cart
@@ -13,12 +13,13 @@ Feature: Amazon Shopping Cart Management
     And I sort the items by "Featured"
     And I add "<search_quantity>" of the searched item into the cart
     And I go to my cart
-    And I edit the "1st" item quantity to "<edited_first_item_quantity>"
-    And I edit the "2nd" item quantity to "<edited_second_item_quantity>"
+    When I edit the "1st" item quantity to "<edited_first_item_quantity>"
+    Then I should see the price for "<expected_item_quantity>" items in the cart
+    When I edit the "2nd" item quantity to "<edited_second_item_quantity>"
     And I delete the "1st" item
-    Then I should see the price for "<expected_second_item_quantity>" items in the cart
+    Then I should see the price for "<expected_item_quantity>" items in the cart
     And I click on "Proceed to checkout" on the cart page
 
     Examples:
-      | deal_quantity | search_item   | search_quantity | edited_first_item_quantity | edited_second_item_quantity | expected_second_item_quantity |
-      | 2             | AAA Batteries | 5               | 1                          | 3                           | 7                             |
+      | deal_quantity | search_item   | search_quantity | edited_first_item_quantity | edited_second_item_quantity | expected_item_quantity |
+      | 2             | AAA Batteries | 5               | 1                          | 3                           | 3                      |

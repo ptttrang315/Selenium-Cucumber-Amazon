@@ -16,8 +16,9 @@ public class ProductDetailsPage {
     }
 
     public static void selectQuantity(String count) throws Exception {
-        WebUI.verifyElementPresent(findTestObject("Amazon.ProductDetails.Quantity.Dropdown"));
+        WebUI.verifyElementVisible(findTestObject("Amazon.ProductDetails.Quantity.Dropdown"));
         WebUI.click(findTestObject("Amazon.ProductDetails.Quantity.Dropdown"));
+        WebUI.verifyElementVisible(findTestObject("Amazon.ProductDetails.Quantity.Select Quantity", Map.of("count", count)));
         WebUI.click(findTestObject("Amazon.ProductDetails.Quantity.Select Quantity", Map.of("count", count)));
     }
 

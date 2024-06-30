@@ -9,6 +9,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import java.util.List;
 
@@ -40,8 +41,13 @@ public class WebElementHelpers {
     }
 
     public static void scrollIntoView(WebDriver driver, WebElement element) {
-        JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
-        javascriptExecutor.executeScript("arguments[0].scrollIntoView({block: \"center\"});", element);
+        try {
+            JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
+            javascriptExecutor.executeScript("arguments[0].scrollIntoView({block: \"center\"});", element);
+        } catch (Exception e) {
+            Actions actions = new Actions(driver);
+            actions.moveToElement(element).perform();
+        }
     }
 
     public static WebElement getWebElement(WebDriver driver, Object object) {

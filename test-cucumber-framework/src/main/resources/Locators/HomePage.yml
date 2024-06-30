@@ -11,6 +11,7 @@ Amazon:
 
   Today's Deals:
     Filter:
+      See more Department: xpath=//a[@aria-labelledby="see-more-departments-label"]
       Option: xpath=//*[text()="${value}"]/../../i
     Product Cart:
       Item: xpath=(//a[contains(@class,"ProductCard")])[${index}]
@@ -21,7 +22,7 @@ Amazon:
       OptionAvailable: xpath=//*[contains(@class, "dropdown")]//li[contains(@class, "dropdownAvailable")]
       OptionUnavailable: xpath=//*[contains(@class, "dropdown")]//li[contains(@class, "dropdownUnavailable")]
     Quantity:
-      Dropdown: xpath=//*[@data-action="quantity-dropdown"]
+      Dropdown: xpath=//*[@id="selectQuantity"]
       Select Quantity: xpath=//*[contains(@id, "quantity") and @data-value='{"stringVal":"${count}"}']
     Add to Cart: xpath=//*[@id="add-to-cart-button"]
 
