@@ -16,6 +16,10 @@
 
 # Introduction
 
+- Automation QA
+- Web-App Technical Test
+- Candidate: trangptt315@gmail.com
+
 ## Motivation
 Based on the preferred requirements, I would like to choose the tech stack to highlight my experience on the following tech stack and tools: Cucumber, Selenium, Java, Maven.
 
