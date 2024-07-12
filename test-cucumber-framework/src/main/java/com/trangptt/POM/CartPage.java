@@ -32,9 +32,9 @@ public class CartPage {
         String gutterSubtotal = WebUI.getText(findTestObject("Amazon.Cart.Subtotals.Gutter View Form"));
         Map<String, String> activeSubtotalData = extractSubtotalData(activeSubtotal);
         Map<String, String> gutterSubtotalData = extractSubtotalData(gutterSubtotal);
-        assert(activeSubtotalData.equals(gutterSubtotalData));
-        assert(activeSubtotalData.get("quantity").equals(quantity));
-        assert(Double.parseDouble(activeSubtotalData.get("price")) > 0);
+        assert (activeSubtotalData.equals(gutterSubtotalData));
+        assert (activeSubtotalData.get("quantity").equals(quantity));
+        assert (Double.parseDouble(activeSubtotalData.get("price")) > 0);
         String output = TakeScreenshot.captureFullPageScreenshot(scenario.getName());
         ScenarioHelpers.attachScreenshot(output, scenario);
         return activeSubtotalData;

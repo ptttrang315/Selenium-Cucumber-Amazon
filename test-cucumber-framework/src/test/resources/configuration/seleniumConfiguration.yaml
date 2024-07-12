@@ -12,18 +12,18 @@ selenium:
     type: chrome
     chrome:
       prefs:
-#        se:recordVideo: true
-#        se:screenResolution: "1920x1080"
+      #        se:recordVideo: true
+      #        se:screenResolution: "1920x1080"
       args:
         - "start-maximized"
         - "--incognito"
         - "high-dpi-support=1"
         - "force-device-scale-factor=1"
-#        - "--disable-extensions"
-#        - "--disable-popup-blocking"
-#        - "enable-automation"
-#        - "--verbose"
-#        - "--proxy-server=10.10.10.10:8080"
+    #        - "--disable-extensions"
+    #        - "--disable-popup-blocking"
+    #        - "enable-automation"
+    #        - "--verbose"
+    #        - "--proxy-server=10.10.10.10:8080"
     edge:
       prefs:
       args:

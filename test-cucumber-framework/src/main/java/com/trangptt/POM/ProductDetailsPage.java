@@ -5,6 +5,7 @@ import com.trangptt.library.WebUI;
 import java.util.Map;
 
 import static com.trangptt.library.TestObject.ObjectRepository.findTestObject;
+
 public class ProductDetailsPage {
     public static boolean hasSizeOptions() throws Exception {
         return WebUI.isElementPresent(findTestObject("Amazon.ProductDetails.Size.Dropdown"));

@@ -39,33 +39,33 @@ public class Waiting {
             @Override
             public WebElement waitForElement(WebDriver driver, Object object, boolean isWait, int timeOut) {
                 return getWaitDriver(driver, isWait, timeOut).until(
-                                ExpectedConditions.presenceOfElementLocated(getBy(object)));
+                        ExpectedConditions.presenceOfElementLocated(getBy(object)));
             }
         },
         ELEMENT_TO_BE_CLICKABLE {
             @Override
             public WebElement waitForElement(WebDriver driver, Object object, boolean isWait, int timeOut) {
                 return getWaitDriver(driver, isWait, timeOut).until(
-                                ExpectedConditions.elementToBeClickable(
-                                        ExpectedConditions.visibilityOfElementLocated(getBy(object)).apply(driver)
-                                ));
+                        ExpectedConditions.elementToBeClickable(
+                                ExpectedConditions.visibilityOfElementLocated(getBy(object)).apply(driver)
+                        ));
             }
         },
         VISIBILITY_OF {
             @Override
             public WebElement waitForElement(WebDriver driver, Object object, boolean isWait, int timeOut) {
                 return getWaitDriver(driver, isWait, timeOut).until(
-                                ExpectedConditions.visibilityOf(
-                                        ExpectedConditions.presenceOfElementLocated(getBy(object)).apply(driver)
-                                ));
+                        ExpectedConditions.visibilityOf(
+                                ExpectedConditions.presenceOfElementLocated(getBy(object)).apply(driver)
+                        ));
             }
         },
         VISIBILITY_OF_ELEMENT_LOCATED {
             @Override
             public WebElement waitForElement(WebDriver driver, Object object, boolean isWait, int timeOut) {
                 return getWaitDriver(driver, isWait, timeOut).until(
-                                ExpectedConditions.visibilityOfElementLocated(getBy(object))
-                        );
+                        ExpectedConditions.visibilityOfElementLocated(getBy(object))
+                );
             }
         }
     }

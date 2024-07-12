@@ -9,8 +9,8 @@ import com.trangptt.library.configuration.ConfigurationManager;
 
 import java.util.Arrays;
 
-@CucumberOptions( features = "src/test/resources/features",
-        glue = { "com.trangptt.definitions" },
+@CucumberOptions(features = "src/test/resources/features",
+        glue = {"com.trangptt.definitions"},
         tags = "")
 
 public class CucumberRunnerTests extends AbstractTestNGCucumberTests {
