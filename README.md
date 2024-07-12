@@ -69,7 +69,7 @@ mvn clean install -DskipTests
 Once all dependencies are downloaded and the source code is compiled successfully, run the following command to trigger the test:
 
 ```bash
-mvn test -Dincludes=CheckoutCart
+mvn test -Dincludes=@CheckoutCart
 ```
 
 - `-Dincludes`: Specify the test tag to run. In this case, it will run the test scenarios with the tag `@CheckoutCart`.
@@ -93,11 +93,11 @@ Test is able to run on different browsers by specifying the browser type. For ex
 Firefox
 
 ```bash
-mvn test -Dincludes=CheckoutCart -Dselenium.browser.type=firefox
+mvn test -Dincludes=@CheckoutCart -Dselenium.browser.type=firefox
 ```
 
 MS Edge
 
 ```bash
-mvn test -Dincludes=CheckoutCart -Dselenium.browser.type=edge
+mvn test -Dincludes=@CheckoutCart -Dselenium.browser.type=edge
 ```
